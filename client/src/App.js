@@ -6,6 +6,8 @@ import './global.css'
 import Register from "./pages/register/register";
 import Student from "./pages/student/student";
 import Recovery from "./pages/recovery/recovery";
+import Explore from "./components/explore/explore";
+import Root from "./pages/root/root";
 
 const App = () => {
   return(
@@ -16,6 +18,9 @@ const App = () => {
               </Route>
               <Route path={'/login'} component={Login} />
               <Route path={'/register'} component={Register} />
+              <Route path={'/home'}>
+                  <Root> <Explore /> </Root>
+              </Route>
               <Route path={'/student-register'} component={Student} />
               <Route path={'/recovery'} component={Recovery} />
           </Switch>
