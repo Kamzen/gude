@@ -3,6 +3,7 @@ import React from "react";
 import './explore.scss';
 import {Link} from "react-router-dom";
 import PromoProduct from "../products/promoProduct";
+import Product from "../products/product";
 
 const Explore = () => {
     return(
@@ -26,6 +27,14 @@ const Explore = () => {
            <br />
            <div className={'row'}>
                <PromoProduct />
+               <Product />
+               <Product />
+               <Product />
+               <Product />
+               <Product />
+               <Product />
+               <Product />
+               <Product />
            </div>
        </div>
     )
