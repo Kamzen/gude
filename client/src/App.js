@@ -8,6 +8,7 @@ import Student from "./pages/student/student";
 import Recovery from "./pages/recovery/recovery";
 import Explore from "./components/explore/explore";
 import Root from "./pages/root/root";
+import DetailProduct from "./pages/detail-product/detailProduct";
 
 const App = () => {
   return(
@@ -18,11 +19,19 @@ const App = () => {
               </Route>
               <Route path={'/login'} component={Login} />
               <Route path={'/register'} component={Register} />
-              <Route path={'/home'}>
-                  <Root> <Explore /> </Root>
-              </Route>
               <Route path={'/student-register'} component={Student} />
               <Route path={'/recovery'} component={Recovery} />
+              {/*
+                Private Routes
+              */}
+              <Route path={'/home'} exact>
+                  <Root> <Explore /> </Root>
+              </Route>
+              <Route path={'/home/:product_id'}>
+                  <Root>
+                      <DetailProduct />
+                  </Root>
+              </Route>
           </Switch>
       </BrowserRouter>
   )

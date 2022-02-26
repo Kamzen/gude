@@ -41,6 +41,7 @@
     }
     .price{
       padding-right: 10px;
+      margin-top: 10px;
       text-align: end;
       span{
         font-size: 10px;
@@ -65,6 +66,10 @@
         border-radius: 7px 0 0 0;
         font: 12px "Rage Italic",sans-serif;
         font-weight: bolder;
+        i{
+          margin-right: 15px;
+          font-size: 17px;
+        }
       }
     }
     .add-to-wishlist{
@@ -75,9 +80,19 @@
         background: #F5F6FA 0 0 no-repeat padding-box;
         opacity: 1;
         border-radius: 0 7px 0 0;
-        font: 12px "Rage Italic",sans-serif;
+        font: 10px "Rage Italic",sans-serif;
         font-weight: bolder;
+        i{
+          margin-right: 15px;
+          font-size: 17px;
+        }
       }
     }
+  }
+  .col-location{
+    margin-left: 10px;
+  }
+  .list-date{
+    margin-left: 10px;
   }
 }

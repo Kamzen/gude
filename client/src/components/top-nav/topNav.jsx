@@ -35,7 +35,7 @@ const TopNav = () => {
                         <div className={'col-md-8'}>
                             <ul>
                                 <li>
-                                    <i className={'fa fa-comment'}> </i>
+                                    <i className={'fab fa-facebook-messenger'}> </i>
                                     <div className={'msg-badge'}><span>9</span></div>
                                 </li>
                                 <li>
