@@ -26,11 +26,11 @@ const  Register = () => {
                     <br />
                     <br />
                     <div className={'row'}>
-                        <div className={'col-md-6'}>
+                        <div className={'col-lg-6'}>
                             <label>Firstname</label>
                             <input type={'text'} placeholder={'Firstname'} className={'form-control first'}/>
                         </div>
-                        <div className={'col-md-6'}>
+                        <div className={'col-lg-6'}>
                             <label>Lastname</label>
                             <input type={'text'} placeholder={'Lastname'} className={'form-control'}/>
                         </div>
