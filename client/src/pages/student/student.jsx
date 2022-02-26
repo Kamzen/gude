@@ -40,10 +40,11 @@ const Student = () => {
                         </div>
                     </div>
                     <br />
+                    <label>Student Email</label>
+                    <input type={'email'} placeholder={'Student Email'} className={'form-control'}/>
                     <br />
                     <label>Location</label>
                     <input type={'tel'} placeholder={'Location'} className={'form-control'}/>
-                    <br />
                     <br />
                     <label>Payment Methods</label>
                     <div className={'payment-methods'}> </div>
