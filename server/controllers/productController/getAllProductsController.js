@@ -1,14 +1,14 @@
-const Product = require('../../models/Product');
-const User = require('../../models/User');
+const Product = require('../../models/Product')
+const User = require('../../models/User')
 
 const getAllProductsController = async (req,res) => {
     let r = []
     try{
         const products = await Product.find({})
         for (let product of products){
-            const user = await User.findById(product._user_id, 'firstname lastname')
-            const {firstname,lastname} = user;
-            r.push({product_info : product, user_info : {firstname,lastname}})
+            const user = await User.findById(product._user_id, 'firstname lastname _id')
+            const {firstname,lastname, _id} = user;
+            r.push({product_info : product, user_info : {firstname,lastname, _id}})
         }
         return res.status(200).json({
             err : false,

@@ -1,19 +1,62 @@
-import React from "react";
+import React, {useState} from "react";
 
 import img from '../../images/login.jpg';
 import icon from '../../images/icon.jpeg';
 
 import './register.scss';
 import {Link} from "react-router-dom";
+import axios from "axios";
+
 
 const  Register = () => {
+
+    const [err,setErr] = useState({});
+    const [firstErr,setFirstErr] = useState('');
+    const [lastErr,setLastErr] = useState('');
+    const [emailErr,setEmailErr] = useState('');
+    const [passErr,setPassErr] = useState('')
+    const signup = (e) => {
+        e.preventDefault();
+        axios({
+            url : 'http://localhost:8080/auth/signup',
+            method : 'POST',
+            data : new FormData(document.getElementById('signup-form')),
+        }).then(resp => {
+            resp = resp.data.err;
+            console.log(resp);
+            setFirstErr('')
+            setLastErr('')
+            setEmailErr('')
+            setPassErr('')
+            resp.forEach(el => {
+                if (el.param === 'firstname'){
+                    setFirstErr(el.msg)
+                }
+                if (el.param === 'lastname'){
+                    setLastErr('')
+                    setLastErr(el.msg)
+                }
+                if (el.param === 'email'){
+                    setEmailErr('')
+                    setEmailErr(el.msg)
+                }
+                if (el.param === 'password'){
+                    setPassErr('')
+                    setPassErr(el.msg)
+                }
+            })
+        }).catch(err => {
+            console.log(err.message)
+        })
+    }
+
     return(
         <div className={'register'}>
             <div className={'img-logo'}>
                 <img src={img} alt={'Register Image'}/>
             </div>
             <div className={'form'}>
-                <form>
+                <form id={'signup-form'}>
                     <div className={'register-icon'}>
                         <img src={icon} alt={'Register Icon'}/>
                     </div>
@@ -26,25 +69,25 @@ const  Register = () => {
                     <br />
                     <br />
                     <div className={'row'}>
-                        <div className={'col-lg-6'}>
-                            <label>Firstname</label>
-                            <input type={'text'} placeholder={'Firstname'} className={'form-control first'}/>
+                        <div className={'col-lg-6 col-xs-12'}>
+                            <label>Firstname <span>{firstErr}</span> </label>
+                            <input type={'text'} name={'firstname'} placeholder={'Firstname'} className={'form-control first'}/>
                         </div>
-                        <div className={'col-lg-6'}>
-                            <label>Lastname</label>
-                            <input type={'text'} placeholder={'Lastname'} className={'form-control'}/>
+                        <div className={'col-lg-6 col-xs-12 last'}>
+                            <label>Lastname <span>{lastErr}</span></label>
+                            <input type={'text'} name={'lastname'} placeholder={'Lastname'} className={'form-control'}/>
                         </div>
                     </div>
                     <br />
                     <br />
-                    <label>Email Address</label>
-                    <input type={'email'} className={'form-control'} placeholder={'Email Address'}/>
+                    <label>Email Address <span>{emailErr}</span></label>
+                    <input type={'email'} name={'email'} className={'form-control'} placeholder={'Email Address'}/>
                     <br />
-                    <label>Password</label>
-                    <input type={'password'} className={'form-control'} placeholder={'Password'}/>
+                    <label>Password <span>{passErr}</span></label>
+                    <input type={'password'} name={'password'} className={'form-control'} placeholder={'Password'}/>
                     <br />
                     <br />
-                    <button className={'btn btn-default register-btn'}>Register</button>
+                    <button onClick={e=>signup(e)} className={'btn btn-default register-btn'}>Register</button>
                     <br />
                     <br />
                     <br />

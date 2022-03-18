@@ -53,9 +53,9 @@ const sellProductController = (req,res) => {
             }
            else{
 
-                fileObj.mv('./product-images/' + fileObj.name, error => {
+                fileObj.mv('./product-images/' + fileObj.name, async error => {
                     if (error){
-                        return res.status(422).json({
+                        return res.status(200).json({
                             err : true,
                             msg : error.message
                         })
@@ -65,7 +65,7 @@ const sellProductController = (req,res) => {
                         */
                         if (payLoad.category === 'phone'){
                             if (payLoad.imei.length <= 0){
-                                return res.status(422).json({
+                                return res.status(200).json({
                                     err : true,
                                     msg : 'IMEI Number Is Required'
                                 })
@@ -76,11 +76,12 @@ const sellProductController = (req,res) => {
                          */
                         if (payLoad.category === 'book'){
                             if (payLoad.isbn.length <= 0){
-                                return res.status(422).json({
+                                return res.status(200).json({
                                     err : true,
                                     msg : 'ISBN Number Is Required'
                                 })
                             }
+                            
                         }
                         /*
                             Create A New Instance Product
@@ -88,7 +89,7 @@ const sellProductController = (req,res) => {
                         const product = new Product({
                             _id : mongoose.Types.ObjectId(),
                             category : payLoad.category,
-                            product_img_url : 'http://localhost:5000/product-images/' + fileObj.name,
+                            product_img_url : 'http://localhost:8080/product-images/' + fileObj.name,
                             imei : payLoad.imei ? payLoad.imei : null,
                             isbn : payLoad.isbn ? payLoad.isbn : null,
                             title : payLoad.title,
@@ -98,7 +99,7 @@ const sellProductController = (req,res) => {
                             quantity : payLoad.quantity,
                             location : payLoad.location,
                             payment_method : 'paypal',
-                            _user_id : '620b5ac03b1bc07c5067fb16',
+                            _user_id : payLoad._user_id,
                         })
 
                         product.save((err,result) => {

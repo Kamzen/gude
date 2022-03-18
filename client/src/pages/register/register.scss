@@ -10,6 +10,9 @@
     top: 0;
     width: 50%;
     border-right: rgba(211, 211, 211, .075);
+    @media screen and (max-width: 768px){
+      display: none;
+    }
 
     img {
       width: 100%;
@@ -24,6 +27,11 @@
     bottom: 0;
     top: 0;
     width: 50%;
+    @media screen and (max-width: 768px){
+      left: 0;
+      width: 100%;
+      overflow-y: auto;
+    }
 
     form {
       width: 70%;
@@ -66,10 +74,20 @@
         background-color: #475993;
         color: #FFFFFF;
       }
+      @media screen and (max-width: 768px){
+        .row{
+          padding: 0;
+          .last{
+            margin-top: 20px;
+          }
+          .col-xs-12{
+            padding: 0;
+          }
+        }
+      }
       .row {
         margin: 0;
         padding: 0;
-        box-sizing: border-box;
         .col-lg-6{
           &:first-child{
             padding-left: 0;
@@ -83,6 +101,10 @@
         font-family: "Rage Italic", serif;
         color: lightgray;
         font-weight: bolder;
+        span{
+          color: red !important;
+          font-size: 10px;
+        }
       }
 
       input {

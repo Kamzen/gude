@@ -13,6 +13,9 @@ html {
 body {
     margin: 0;
 }
+.bd{
+    border: 1px solid lightblue;
+}
 article,
 aside,
 details,

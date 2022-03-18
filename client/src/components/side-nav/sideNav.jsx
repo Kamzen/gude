@@ -3,22 +3,22 @@ import React from "react";
 import logoImg from '../../images/logo.png';
 
 import './sideNav.scss';
-import {Link, NavLink} from "react-router-dom";
+import {Link, NavLink, withRouter} from "react-router-dom";
 
-const SideNav = () => {
+const SideNav = ({history}) => {
     return(
         <div className={'side-nav'}>
-            <div className={'logo-img'}>
+            <div className={'logo-img'} onClick={()=>history.push('/home')}>
                 <img src={logoImg} alt={''}/>
             </div>
             <ul className={'list-group'}>
-                <li className={'list-group-item'}>
+                <li className={'list-group-item'} onClick={()=>history.push('/electronics')}>
                     <i className="material-icons devices">devices</i>
-                    <Link to={''}>Electronics</Link>
+                    <Link to={'/electronics'}>Electronics</Link>
                 </li>
-                <li className={'list-group-item'}>
+                <li className={'list-group-item'} onClick={()=>history.push('/outdoors')}>
                     <i className={'fas fa-campground'}> </i>
-                    <Link to={''}>Outdoors</Link>
+                    <Link to={'/outdoors'}>Outdoors</Link>
                 </li>
                 <li className={'list-group-item'}>
                     <i className={'fab fa-xbox'}> </i>
@@ -42,4 +42,4 @@ const SideNav = () => {
     )
 }
 
-export default SideNav
+export default withRouter(SideNav)

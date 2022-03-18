@@ -4,9 +4,25 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+import {combineReducers, createStore} from "redux";
+import fetchUserInfoReducer from "./states/user-loggedin-info/fetchUserInfoReducer";
+import {Provider} from "react-redux";
+import fetchProductsReducer from "./states/fetch-products/fetchProductsReducer";
+import addToCardReducer from "./states/add-to-cart/addToCardReducer";
+
+const reducers = combineReducers({
+    user_info: fetchUserInfoReducer,
+    products: fetchProductsReducer,
+    cart_count : addToCardReducer
+})
+
+const store = createStore(reducers, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+        <App />
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
