@@ -1,0 +1,12 @@
+.h-menu{
+  width: 100%;
+  height: 50px;
+  margin-top: 10px;
+  ul{
+    overflow-x: scroll;
+    li{
+      list-style-type: none;
+      display: inline-block;
+    }
+  }
+}
